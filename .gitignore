@@ -1,0 +1,7 @@
+__pycache__/
+myvenv
+conf.py
+static/
+media/
+db.sqlite3
+
