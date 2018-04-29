@@ -3,7 +3,7 @@ from .models import Index, FolioImage
 
 @admin.register(Index)
 class IndexAdmin(admin.ModelAdmin):
-	list_display = ['title','background_image']
+	list_display = ['title','category_img']
 
 
 @admin.register(FolioImage)
