@@ -15,8 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
   	path('blog/', include('blog.urls', namespace="blog")),
 ]
+
+if settings.DEBUG:
+	urlpatterns += static(settings.MEDIA_URL,
+						document_root=settings.MEDIA_ROOT)
+	#미디어 url로 시작하는 요청이 오면 MEDIA_ROOT경로를 찾아서 파일을 보여줌
