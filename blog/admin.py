@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Index, FolioImage
+from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Index)
 class IndexAdmin(admin.ModelAdmin):
@@ -7,5 +8,7 @@ class IndexAdmin(admin.ModelAdmin):
 
 
 @admin.register(FolioImage)
-class IndexAdmin(admin.ModelAdmin):
+class IndexAdmin(SummernoteModelAdmin):
 	list_display = ['title','image']
+	list_fields = ['title','image']
+	summernote_fields = ['content']
