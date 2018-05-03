@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import CreateView
+from django.views.generic import CreateView, TemplateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy #success_url 활용 될때 순차적으로 실행하지않고 "게으르게" 실행
-from django.contrib.auth.forms import UserCreationForm
+from .forms import UserCreationForm
+import logging
 
 User = get_user_model()
 
@@ -18,5 +19,3 @@ signup = CreateView.as_view(model=User, form_class=UserCreationForm,
 def profile(request):
 	return render(request, 'accounts/profile.html')
 from django.shortcuts import render
-
-# Create your views here.

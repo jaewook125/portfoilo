@@ -1,4 +1,4 @@
-from django.urls import path, reverse_lazy
+from django.urls import path, reverse_lazy, re_path
 from django.contrib.auth.views import login, logout
 from . import views
 
@@ -13,4 +13,5 @@ urlpatterns = [
 	path('logout/', logout, name='logout', kwargs={
 			'next_page':reverse_lazy('root'),
 		}),
+
 ]

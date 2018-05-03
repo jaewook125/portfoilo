@@ -132,7 +132,9 @@ STATICFILES_DIRS =[
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+PASSWORD_RESET_TIMEOUT_DAYS = 1
 
+# AUTH_USER_MODEL = 'accounts.User' #커스텀 유저모델 받아오기
 
 
 
