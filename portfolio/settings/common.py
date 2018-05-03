@@ -26,8 +26,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SITE_ID = 2 #admin의 sites pk번호
+
 ALLOWED_HOSTS = []
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #SMTP 전자 이메일 서버 설정
 
 # Application definition
 
@@ -38,9 +41,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django.contrib.sites',
+    'allauth', 
+    'allauth.account', 
+    'allauth.socialaccount', 
+
     'django_summernote',
     'blog',
     'accounts',
+
+    'allauth.socialaccount.providers.naver', 
 ]
 
 MIDDLEWARE = [
@@ -138,3 +149,15 @@ PASSWORD_RESET_TIMEOUT_DAYS = 1
 
 
 
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth` 
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail 
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
+LOGIN_REDIRECT_URL = "/blog/"
+ACCOUNT_AUTHENTICATED_LOGOUT_REDIRECTS = True
+ACCOUNT_LOGOUT_REDIRECT_URL = "/blog/"
