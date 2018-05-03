@@ -1,0 +1,27 @@
+{% extends "accounts/layout.html" %}
+
+{% block content %}
+    <header class="masthead text-center text-white d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h1 class="text-uppercase">
+              <strong>로그인</strong>
+            </h1>
+            <hr>
+          </div>
+          <div class="col-lg-8 mx-auto">
+            <p class="text-faded mb-5">설명 1</p>
+
+				<form action="" method="post">
+					{% csrf_token %}
+					<table class="table table-hover table-bordered">
+						{{ form.as_table }}
+					</table>
+            <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="로그인">
+				</form>
+          </div>
+        </div>
+      </div>
+    </header>
+{% endblock %}
