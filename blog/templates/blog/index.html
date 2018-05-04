@@ -1,7 +1,9 @@
 {% extends "blog/layout.html" %}
+{% load staticfiles %}
 
 {% block content %}
-    <header class="masthead text-center text-white d-flex">
+    <header class="masthead text-center text-white d-flex" 
+    style="background-image: url('{% static 'a/img/header.jpg' %}');">
       <div class="container my-auto">
         <div class="row">
           <div class="col-lg-10 mx-auto">
