@@ -28,7 +28,7 @@ DEBUG = True
 
 SITE_ID = 2 #admin의 sites pk번호
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #SMTP 전자 이메일 서버 설정
 
