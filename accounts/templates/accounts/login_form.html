@@ -1,5 +1,6 @@
 {% extends "accounts/layout.html" %}
 {% load staticfiles %}
+{% load socialaccount %}
 
 {% block content %}
     <header class="masthead text-center text-white d-flex"
@@ -21,7 +22,9 @@
 						{{ form.as_table }}
 					</table>
             <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="로그인">
+            <a id=naver_login class="btn btn-primary btn-xl js-scroll-trigger" href="{% provider_login_url 'naver' %}">네이버로 로그인</a>
 				</form>
+
           </div>
         </div>
       </div>

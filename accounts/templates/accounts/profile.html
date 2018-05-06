@@ -1,12 +1,7 @@
-{% extends "accounts/layout.html" %}
-
-{% block content %}
-<div class="container">
-	<div class="row">
-		<div class="col-sm-12">
-			<h3>{{user}} 프로필</h3>
-
-		</div>
-	</div>
-</div>
-{% endblock %}
+<h2>{{ user.get_full_name }}</h2>
+<ul>
+  <li>Username: {{ user.username }}</li>
+  <li>nickname: {{ user.profile.nickname }}</li>
+  <li>region: {{ user.profile.region }}</li>
+</ul>
+<a href="{% url "accounts:update_profile"%}">수정</a>

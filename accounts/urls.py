@@ -14,4 +14,5 @@ urlpatterns = [
 			'next_page':reverse_lazy('root'),
 		}),
 
+	path('update_profile/', views.update_profile, name='update_profile'),
 ]
