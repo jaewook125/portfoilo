@@ -1,48 +1,92 @@
-{% load socialaccount %}
-{% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
-    <head> 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-    <!-- Website CSS style -->
-    <link href="{% static 'a/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Website Font style -->
-    <link href="{% static 'a/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{% static 'signup.css' %}">
-    <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-
-    <title>회원가입</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row main">
-        <div class="main-login main-center">
-        <h5>회원가입 하세요!</h5>
-          <form class="" method="post" action="#">
-            {% csrf_token %}
-            <div class="form-group">
-            {{ form.as_table }}
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static "signup.css" %}">
+</head>
+<body>
+{% if user.is_authenticated %}
+<script type="text/javascript">
+  alert('잘못된 접근입니다. \n회원가입을 위해서는 로그아웃이 필요합니다.')
+  window.location.href = '/';
+</script>
+{% else %}
+<div id="perspective">
+  <div id="container"></div>
+</div>
+    <div class="row-fluid">
+        <div class="col-md-3 col-sm-6 col-xs-10 login-box">
+            <div class="row login-box-header">
+                <div class="col-md-12 col-sm-12 logo">
+                    <img src="{% static 'badass.ico'%}">
+                </div>
+                <div class="col-md-12 col-sm-12 company-name text-center">
+                    <h3>BADASS</h3>
+                </div>
             </div>
-            <div class="form-group">
-              <input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" value="회원가입">
+            <div class="row login-box-body">
+                <ul class="nav nav-tabs-custom">
+                    <li><a href="{% url "accounts:login" %}" target="_blank">Login</a></li>
+                    <li class="active"><a href="#register" data-toggle="tab">Register</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="register">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-12 form-body">
+                              {{ form }}
+                            </div>
+                            <div class="col-md-12 form-footer text-center">
+                                    <input type="submit" class="btn btn-block" value="회원가입">
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            
-          </form>
-          <a class="btn btn-primary btn-lg btn-block login-button" href="{% url "root" %}">홈으로</a>
-          <a href="{% provider_login_url 'naver' %}">네이버</a>
- <!--            <img src="/static/2014_Login_with_NAVER_button_png/네이버 아이디로 로그인_완성형_Green.png/"> -->
         </div>
-      </div>
     </div>
+    {% endif %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script>
+      var n = 100;
+    var frames = [];
 
-     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static 'a/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-  </body>
+    frames.push({transform: 'none'})
+    var frameCount = 3 + Math.random() * 8;
+    var translate = 0;
+    var rotate = 0;
+    var rotateY = 0;
+    var scale = 1;
+    var z = 0;
+    for (var i = 0; i < frameCount; i++) {
+      z += (0.5 - Math.random()) * 100;
+      scale += (0.5 - Math.random()) * 2;
+      rotate += (0.5 - Math.random()) * 1080;
+      rotateY += (0.5 - Math.random()) * 1080;
+      translate += (0.5 - Math.random()) * 500;
+      frames.push({
+        transform: 'rotate(' + rotate + 'deg) rotateY(' + rotateY + 'deg) translateX(' + translate + 'px) scale(' + scale + ') translateZ(' + z + 'px)',
+      });
+    }
+    frames.push({transform: 'none'})
+
+    var duration = frames.length * 5000;
+
+    for (var i = 0; i < n; i++) {
+      var ball = document.createElement('ball');
+      var color = 'rgb(' + Math.round((i / n) * 256) + ', 128, 200)';
+      ball.style.background = color;
+      document.body.appendChild(ball);
+      ball.classList.add('ball');
+      ball.animate(frames, {
+        duration: duration,
+        iterations: Infinity,
+        delay: i / n * -duration,
+      });
+    }
+</script>
+</body>
 </html>

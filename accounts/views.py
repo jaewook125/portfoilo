@@ -11,6 +11,7 @@ import logging
 
 User = get_user_model()
 
+
 signup = CreateView.as_view(model=User, form_class=UserCreationForm,
 							template_name='accounts/signup_form.html',
 							success_url=reverse_lazy('root')) 
