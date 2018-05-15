@@ -17,6 +17,14 @@ a {
   font-weight: 400;
 }
 
+.btn-primary {
+  background-color: #1EEB00;
+  border-color: #1EEB00;
+}
+#naver {
+  color: #fff;
+}
+
 h2 {
   text-align: center;
   font-size: 16px;
@@ -104,7 +112,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #39ace7;
+  background-color: #F01F40;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -224,6 +232,12 @@ input[type=text]:placeholder, input[type=password]:placeholder {
 }
 
 .fadeIn.fourth {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+.fadeIn.five {
   -webkit-animation-delay: 1s;
   -moz-animation-delay: 1s;
   animation-delay: 1s;
