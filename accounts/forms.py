@@ -48,7 +48,7 @@ class UserCreationForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
+            raise forms.ValidationError("패스워드가 일치하지 않습니다.")
         return password2
 
     def save(self, commit=True):
@@ -82,3 +82,22 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('nickname', 'region')
+
+
+class SignupForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=100)
+    last_name = forms.CharField(max_length=100)
+
+    class Meta:
+        model = Profile
+        fields = ('first_name', 'last_name', 'image', 'region')
+
+    def signup(self, request, user):
+        # Save your user
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        user.save()
+
+        user.profile.image = self.cleaned_data['image']
+        user.profile.region = self.cleaned_data['region']
+        user.profile.save()

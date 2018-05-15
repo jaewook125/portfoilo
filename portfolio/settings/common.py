@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.account', 
     'allauth.socialaccount', 
 
+    'bootstrap4',
     'storages',
 
     'django_summernote',
@@ -165,4 +166,4 @@ ACCOUNT_AUTHENTICATED_LOGOUT_REDIRECTS = True
 ACCOUNT_LOGOUT_REDIRECT_URL = "/blog/"
 
 
-ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.ProfileForm'
+ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.SignupForm'

@@ -17,6 +17,14 @@ a {
   font-weight: 400;
 }
 
+.btn-primary {
+  background-color: #1EEB00;
+  border-color: #1EEB00;
+}
+#naver {
+  color: #fff;
+}
+
 h2 {
   text-align: center;
   font-size: 16px;
@@ -82,7 +90,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
+  background-color: #F05F40;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -104,7 +112,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #39ace7;
+  background-color: #F01F40;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -115,7 +123,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -136,12 +144,12 @@ input[type=text] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus {
+input[type=text]:focus, input[type=password]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type=text]:placeholder {
+input[type=text]:placeholder, input[type=password]:placeholder {
   color: #cccccc;
 }
 
@@ -224,6 +232,12 @@ input[type=text]:placeholder {
 }
 
 .fadeIn.fourth {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+.fadeIn.five {
   -webkit-animation-delay: 1s;
   -moz-animation-delay: 1s;
   animation-delay: 1s;

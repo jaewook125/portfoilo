@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load bootstrap4 %}
 <html>
 <head>
     <script src="{% static 'a/vendor/jquery/jquery.min.js' %}"></script>
@@ -10,7 +11,18 @@
 <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}?ver=1">
 <!------ Include the above in your HEAD tag ---------->
 </head>
-
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+{% for message in messages %}
+    <div class="{{ message|bootstrap_message_classes }} alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&#215;</button>
+        {{ message }}
+    </div>
+{% endfor %}
+    </div>
+  </div>
+</div>
 <body>
 
     {% block content %}

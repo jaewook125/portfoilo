@@ -1,7 +1,11 @@
-<form method="post">
+{% load bootstrap4 %}
+
+<form method="post" class="form">
   {% csrf_token %}
-  {{ user_form.as_p }}
-  {{ profile_form.as_p }}
-  <button type="submit">Save changes</button>
+	  {% bootstrap_form user_form %}
+	  {% bootstrap_form profile_form %}
+  {% buttons %}
+  	<button type="submit">Save changes</button>
+  {% endbuttons %}
 </form>
 <a href="{% url "root" %}">홈으로</a>
