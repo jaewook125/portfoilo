@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'blog',
     'accounts',
+    'post',
 
     'allauth.socialaccount.providers.naver', 
 ]

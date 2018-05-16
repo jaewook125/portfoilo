@@ -25,6 +25,7 @@ urlpatterns = [
     path('', lambda request: redirect('blog:index'),name='root'),
     path('summernote/', include('django_summernote.urls')),
   	path('blog/', include('blog.urls', namespace="blog")),
+    path('post/', include('post.urls', namespace="post")),    
     path('accounts/', include('accounts.urls')),
 
 ]
