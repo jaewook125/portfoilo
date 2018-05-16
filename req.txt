@@ -2,3 +2,5 @@ djagno
 pillow
 django-allauth
 django-storages
+django-bootstrap4
+django-summernote

@@ -1,58 +1,46 @@
-{% extends "accounts_layout.html" %}
-{% load socialaccount %}
-{% load staticfiles %}
+{% extends "accounts_layout.html" %} 
+{% load socialaccount %} 
+{% load staticfiles %} 
+
 {% block content %}
 
-  {% if user.is_authenticated %}
-  <script type="text/javascript">
-    alert('잘못된 접근입니다!')
-    window.location.href = '/';
-  </script>
-  {% else %}
-
+{% if user.is_authenticated %}
+<script type="text/javascript">
+alert('잘못된 접근입니다!')
+window.location.href = '/';
+</script>
+{% else %}
 <div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
-
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <h3>로그인</h3>
-      <img src="{% static 'badass.ico' %}" id="icon" alt="User Icon" />
-    </div>
-
-    <!-- Login Form -->
-    <form method="post">
-      {% csrf_token %}
-        {% if form.errors %}
-        <p>아이디와 패스워드가 일치하지 않습니다!</p>
-        {% endif %}
-        {% if next %}
-            {% if user.is_authenticated %}
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <h3>로그인</h3>
+            <img src="{% static 'badass.ico' %}" id="icon" alt="User Icon" />
+        </div>
+        <!-- Login Form -->
+        <form method="post">
+            {% csrf_token %} {% if form.errors %}
+            <p>아이디와 패스워드가 일치하지 않습니다!</p>
+            {% endif %} {% if next %} {% if user.is_authenticated %}
             <p>access 권한이 없습니다! access 할 수 있는 계정으로 로그인하세요.</p>
             {% else %}
             <p>페이지를 보려면 로그인하세요.</p>
-            {% endif %}
-        {% endif %}
-
-      <input type="text" id="{{ form.username.id_for_label }}" class="fadeIn second" name="{{ form.username.html_name }}" placeholder="아이디">
-      <input type="password" id="{{ form.password.id_for_label }}" class="fadeIn third" name="{{ form.password.html_name }}" placeholder="패스워드">
-      <input type="submit" class="fadeIn fourth" value="로그인">
-      <button class="fadeIn five btn btn-block btn-primary">
-        <a id='naver' href="{% provider_login_url "naver" %}">네이버 로그인</a>
-      </button>
-    </form>
-
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+            {% endif %} {% endif %}
+            <input type="text" id="{{ form.username.id_for_label }}" class="fadeIn second" name="{{ form.username.html_name }}" placeholder="아이디">
+            <input type="password" id="{{ form.password.id_for_label }}" class="fadeIn third" name="{{ form.password.html_name }}" placeholder="패스워드">
+            <input type="submit" class="fadeIn fourth" value="로그인">
+            <button class="fadeIn five btn btn-block btn-primary">
+                <a id='naver' href="{% provider_login_url " naver " %}">네이버 로그인</a>
+            </button>
+        </form>
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+        <div id="formFooter">
+            <a class="underlineHover" href="{% url 'root' %}">Home</a>
+        </div>
     </div>
-    <div id="formFooter">
-      <a class="underlineHover" href="{% url 'root' %}">Home</a>
-    </div>
-
-  </div>
 </div>
-
-
-{% endif %}
-{% endblock %}
+{% endif %} {% endblock %}
