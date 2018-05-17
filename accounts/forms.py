@@ -84,20 +84,20 @@ class ProfileForm(forms.ModelForm):
         fields = ('nickname', 'region')
 
 
-class SignupForm(forms.ModelForm):
-    first_name = forms.CharField(max_length=100)
-    last_name = forms.CharField(max_length=100)
+# class SignupForm(forms.ModelForm):
+#     first_name = forms.CharField(max_length=100)
+#     last_name = forms.CharField(max_length=100)
 
-    class Meta:
-        model = Profile
-        fields = ('first_name', 'last_name', 'image', 'region')
+#     class Meta:
+#         model = Profile
+#         fields = ('first_name', 'last_name', 'image', 'region')
 
-    def signup(self, request, user):
-        # Save your user
-        user.first_name = self.cleaned_data['first_name']
-        user.last_name = self.cleaned_data['last_name']
-        user.save()
+#     def signup(self, request, user):
+#         # Save your user
+#         user.first_name = self.cleaned_data['first_name']
+#         user.last_name = self.cleaned_data['last_name']
+#         user.save()
 
-        user.profile.image = self.cleaned_data['image']
-        user.profile.region = self.cleaned_data['region']
-        user.profile.save()
+#         user.profile.image = self.cleaned_data['image']
+#         user.profile.region = self.cleaned_data['region']
+#         user.profile.save()
