@@ -70,6 +70,7 @@ section {
   text-shadow: none;
 }
 
+
 img::selection {
   color: #fff;
   background: transparent;
@@ -223,6 +224,7 @@ header.masthead p {
   position: relative;
   display: block;
   max-width: 650px;
+  max-height: 350px;
   margin: 0 auto;
 }
 
